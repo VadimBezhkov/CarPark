@@ -20,8 +20,10 @@ namespace ConsoleApp1
             get { return age; }
             set
             { 
-                if(age<120&&age>0)
+                if(Age<120&&Age>0)
                 age = value; 
+                else
+                    Console.WriteLine("Incorected Age");
             }
         }
 
@@ -30,7 +32,7 @@ namespace ConsoleApp1
         {
             LastName = lastName;
             FirstName = firstName;
-            this.Age = Age;
+            age=Age;
 
         }
     }
