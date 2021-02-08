@@ -10,6 +10,9 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
+            Client cli = new Client("sadasd", "asdasdasd", 12,Gender.man);
+            Console.WriteLine($"") ;
+            Console.ReadKey();
         }
     }
 }

@@ -14,12 +14,24 @@ namespace ConsoleApp1
     {
         public string LastName { get; set; }
         public string FirstName { get; set; }
-        public int Age { get; set; }
-        public Person(string lastName, string firstName, int Age)
+        private int age;
+        public int Age
+        {
+            get { return age; }
+            set
+            { 
+                if(age<120&&age>0)
+                age = value; 
+            }
+        }
+
+        public byte Gender { get; set; }
+        public Person(string lastName, string firstName, int Age, Gender gender)
         {
             LastName = lastName;
             FirstName = firstName;
             this.Age = Age;
+
         }
     }
 }
