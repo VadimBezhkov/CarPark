@@ -6,6 +6,18 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp1
 {
+    interface IVehicleDelivery:ISum,ICheck
+    {
+        void Issue();
+    }
+    interface ISum
+    {
+        void GetMoney();
+    }
+    interface ICheck
+    {
+        void CheckServiceability();
+    }
     class Dispather : Person
     {
         public int SumKassa { get; set; }

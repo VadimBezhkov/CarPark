@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp1
 {
-    class Trucs : Vehicle
+    public class Parking<T>
     {
-        public Trucs(int price, string brand, bool service) : base(price, brand, service)
-        {
-        }
+        List<T> tehnics = new List<T>();
     }
 }

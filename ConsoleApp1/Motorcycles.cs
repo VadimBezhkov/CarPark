@@ -8,5 +8,8 @@ namespace ConsoleApp1
 {
     class Motorcycles : Vehicle
     {
+        public Motorcycles(int price, string brand, bool service) : base(price, brand, service)
+        {
+        }
     }
 }

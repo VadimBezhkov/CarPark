@@ -65,6 +65,7 @@
     <Compile Include="Driver.cs" />
     <Compile Include="Mopeds.cs" />
     <Compile Include="Motorcycles.cs" />
+    <Compile Include="Parking.cs" />
     <Compile Include="Person.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
