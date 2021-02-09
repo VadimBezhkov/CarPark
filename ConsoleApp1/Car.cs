@@ -41,9 +41,13 @@ namespace ConsoleApp1
         {
             return $"Price: {Price} On the run {Serviceability} Brand {(BrandСar)Brand}";
         }
+        //public object Clone()
+        //{
+        //    return new Car(Price, Serviceability, (BrandСar)Brand, Name);
+        //}
         public object Clone()
         {
-            return new Car(Price, Serviceability, (BrandСar)Brand, Name);
+            return this.MemberwiseClone();
         }
     }
 }
