@@ -14,7 +14,7 @@ namespace ConsoleApp1
     {
         void Repairs();
     }
-    abstract class Vehicle:IComparable<Vehicle>
+   public abstract class Vehicle:IComparable<Vehicle>
     {
 
         public int Price { get; set; }

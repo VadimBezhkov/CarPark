@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp1
 {
-    class Client : Person
+    class Client : Person,ICloneable
     {
         public int Sum { get; set; }
         public Client(string lastName, string firstName, int Age, Gender gender,int sum) : base(lastName, firstName, Age, gender)
@@ -21,5 +21,10 @@ namespace ConsoleApp1
         {
             disp.client.Add(this);
         }
+        public object Clone()
+        {
+            return this.MemberwiseClone();
+        }
+        
     }
 }

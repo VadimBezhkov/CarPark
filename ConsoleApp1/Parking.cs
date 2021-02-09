@@ -22,6 +22,10 @@ namespace ConsoleApp1
         {
             tehnics.AddRange(vehi);
         }
+        public void Addtehnics(T car)
+        {
+            tehnics.Add(car);
+        }
         public void Show()
         {
             foreach (var item in tehnics)

@@ -10,10 +10,18 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
+
             Client cli = new Client("sadasd", "asdasdasd", 12,Gender.man,100);
-            Console.WriteLine(cli.ToString());
             Client cli1 = new Client("sadasd", "asdasdasd", 18, Gender.woman, 200);
-            Console.WriteLine(cli1.ToString());
+            Client cli2 = (Client)cli1.Clone();
+            cli2.Age = 22;
+            cli2.FirstName = "Nivarov";
+            cli2.Gender = (int)Gender.man;
+            Dispather ivanov = new Dispather("Ivanov", "Sergey", 29, Gender.man);
+            ivanov.AddClient(cli);
+            ivanov.AddClient(cli1);
+            ivanov.AddClient(cli2);
+            ivanov.ShowClients();
             Car a100 = new Car(100, true, BrandСar.Audi,"a100");
             Car a80 = new Car(250, true, BrandСar.Audi, "a80");
             Car a4 = new Car(700, true, BrandСar.Audi, "a4");
@@ -23,6 +31,9 @@ namespace ConsoleApp1
             a8a.Price = 400;
             a8a.Serviceability=true;
             Parking <Car> sts = new Parking<Car>(a100,a80,a6,a8,a4,a8a);
+            Car v40 = new Car(290, true, BrandСar.Volvo, "v40"); 
+            sts.Addtehnics(v40);
+            //Parking<Car> sts1 = new Parking<Car>(new List<Car> { a100, a80, a6, a8, a4, a8a });
             sts.tehnics.Sort();
             sts.Show();
             Console.ReadKey();

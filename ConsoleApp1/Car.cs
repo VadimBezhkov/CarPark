@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp1
 {
-    enum BrandСar
+   public enum BrandСar
     {
         Volvo,
         Audi,
@@ -30,7 +30,7 @@ namespace ConsoleApp1
         Skoda
     }
 
-    class Car : Vehicle, ICloneable
+    public class Car : Vehicle, ICloneable
     {
         public Car(int price, bool service,BrandСar brand,string name) : base(price, service,name)
         {
