@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp1
 {
-
     class Client : Person
     {
         public int Sum { get; set; }
@@ -17,6 +16,10 @@ namespace ConsoleApp1
         public override string ToString()
         {
             return $"FirstName: {FirstName} LastName: {LastName} Age: {Age} Gender {(Gender)Gender} Sum: {Sum}";
+        }
+        public void SayToDispather(Dispather disp)
+        {
+            disp.client.Add(this);
         }
     }
 }

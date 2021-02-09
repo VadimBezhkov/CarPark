@@ -20,7 +20,9 @@ namespace ConsoleApp1
     }
     class Dispather : Person
     {
+        public List<Client> client = new List<Client>();
         public int SumKassa { get; set; }
+        public Parking<Vehicle> thehnics { get; set; }
         public Dispather(string lastName, string firstName, int Age, Gender gender) : base(lastName, firstName, Age, gender)
         {
         }
