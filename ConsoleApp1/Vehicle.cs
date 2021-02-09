@@ -14,12 +14,11 @@ namespace ConsoleApp1
     {
 
         public int Price { get; set; }
-        public string Brand { get; set; }
+        public int Brand { get; set; }
         public bool Serviceability { get; set; }
-        public Vehicle(int price, string brand, bool service)
+        public Vehicle(int price,bool service)
         {
             Price = price;
-            Brand = brand;
             Serviceability = service;
         }
     }

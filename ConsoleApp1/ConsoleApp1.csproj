@@ -59,7 +59,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Buses.cs" />
-    <Compile Include="Cars.cs" />
+    <Compile Include="Car.cs" />
     <Compile Include="Client.cs" />
     <Compile Include="Dispather.cs" />
     <Compile Include="Driver.cs" />

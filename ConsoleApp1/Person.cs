@@ -33,7 +33,8 @@ namespace ConsoleApp1
             LastName = lastName;
             FirstName = firstName;
             age=Age;
-
+            Gender = (byte)gender;
+            
         }
     }
 }

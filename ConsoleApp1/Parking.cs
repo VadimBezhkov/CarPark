@@ -17,5 +17,12 @@ namespace ConsoleApp1
         {
             tehnics.AddRange(vehi);
         }
+        public void Show()
+        {
+            foreach (var item in tehnics)
+            {
+                Console.WriteLine(item.ToString());
+            }
+        }
     }
 }
