@@ -39,7 +39,10 @@ namespace ConsoleApp1
         }
         public override string ToString()
         {
-            return $"Price: {Price} On the run {Serviceability} Brand {(BrandСar)Brand}";
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine(new string('-', 60));
+            Console.ResetColor();
+            return $"Name: {Name}|  Brand: {(BrandСar)Brand}| Price: {Price}| On the run: {Serviceability} ";
         }
         //public object Clone()
         //{

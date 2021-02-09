@@ -21,7 +21,7 @@ namespace ConsoleApp1
             Car a8 = new Car(50, false, BrandСar.Audi, "a8");
             Car a8a = (Car)a8.Clone();
             a8a.Price = 400;
-            a8a.Serviceability = true;
+            a8a.Serviceability=true;
             Parking <Car> sts = new Parking<Car>(a100,a80,a6,a8,a4,a8a);
             sts.tehnics.Sort();
             sts.Show();
