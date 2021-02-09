@@ -9,7 +9,7 @@ namespace ConsoleApp1
     class Buses : Vehicle
     {
         public int CountPlace { get; set; }
-        public Buses(int price, bool service) : base(price, service)
+        public Buses(int price, bool service,string name) : base(price, service,name)
         {
         }
     }

@@ -29,9 +29,10 @@ namespace ConsoleApp1
         Tesla,
         Skoda
     }
-    class Car : Vehicle
+
+    class Car : Vehicle, ICloneable
     {
-        public Car(int price, bool service,BrandСar brand) : base(price, service)
+        public Car(int price, bool service,BrandСar brand,string name) : base(price, service,name)
         {
             Brand = (int)brand;
             
@@ -39,6 +40,10 @@ namespace ConsoleApp1
         public override string ToString()
         {
             return $"Price: {Price} On the run {Serviceability} Brand {(BrandСar)Brand}";
+        }
+        public object Clone()
+        {
+            return new Car(Price, Serviceability, (BrandСar)Brand, Name);
         }
     }
 }
