@@ -28,6 +28,7 @@ namespace ConsoleApp1
         {
             Console.WriteLine("Enter you name");
             string name =Console.ReadLine();
+
             for (int i = 0; i < this.client.Count; i++)
             {
                 if (client.FirstName == name)
@@ -79,6 +80,7 @@ namespace ConsoleApp1
                     }
                 }
             }
+
             if (veh != null)
             {
                 for (int i = 0; i < veh.Count; i++)
@@ -88,11 +90,13 @@ namespace ConsoleApp1
                         Console.Clear();
                         Console.WriteLine("Wait, repairing");
                         int time = 10;
+
                         for (int j=time; j > 0; j--)
                         {
                             Console.Write($"\r {new string (' ',50)}\rSeconds: {j}\r");
                             Thread.Sleep(1000);
                         }
+
                         Console.WriteLine("You can take it back");
                         veh[i].Serviceability = true;
                         thehnics.tehnics.Add(veh[i]);

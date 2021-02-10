@@ -24,11 +24,13 @@ namespace ConsoleApp1
             disp.client.Add(this);
             affordable.Clear();
             WhereMyCar = disp.thehnics;
+
             foreach (var teh in WhereMyCar.tehnics)
             {
                 if (teh.Price <= Sum)
                     affordable.Add(teh);
             }
+
             ShowTeh();
         }
         public void ShowTeh()
@@ -42,6 +44,7 @@ namespace ConsoleApp1
         {
             Console.WriteLine("Enter Car");
             string str = Console.ReadLine();
+
             for (int i = 0; i < affordable.Count; i++)
             {
                 var CurrentVeh = affordable[i];
@@ -54,6 +57,7 @@ namespace ConsoleApp1
                     break;
                 }
             }
+
         }
         public object Clone()
         {
