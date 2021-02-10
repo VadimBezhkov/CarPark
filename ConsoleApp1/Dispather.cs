@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace ConsoleApp1
@@ -18,9 +19,10 @@ namespace ConsoleApp1
     {
         void CheckServiceability();
     }
-    class Dispather : Person
+    class Dispather : Person, ICheck
     {
-        private List<Client> client = new List<Client>();
+        public List<Client> client = new List<Client>();
+        private List<Vehicle> veh = new List<Vehicle>();
 
         public void AddClient(Client client)
         {
@@ -61,6 +63,43 @@ namespace ConsoleApp1
         {
             return $"FirstName: {FirstName} LastName: {LastName} Age:" +
                 $" {Age} Gender {(Gender)Gender} Work Experience: {WorkExperience}";
+        }
+
+        public void CheckServiceability()
+        {
+
+            for (int i = 0; i < thehnics.tehnics.Count; i++)
+            {
+                var serviceability = thehnics.tehnics[i];
+                {
+                    if (!serviceability.Serviceability)
+                    {
+                        veh.Add(serviceability);
+                        thehnics.tehnics.Remove(serviceability);
+                    }
+                }
+            }
+            if (veh != null)
+            {
+                for (int i = 0; i < veh.Count; i++)
+                {
+                    if (veh[i] != null)
+                    {
+                        Console.Clear();
+                        Console.WriteLine("Wait, repairing");
+                        int time = 10;
+                        for (int j=time; j > 0; j--)
+                        {
+                            Console.Write($"\r {new string (' ',50)}\rSeconds: {j}\r");
+                            Thread.Sleep(1000);
+                        }
+                        Console.WriteLine("You can take it back");
+                        veh[i].Serviceability = true;
+                        thehnics.tehnics.Add(veh[i]);
+                        veh.Clear();
+                    }
+                }
+            }
         }
     }
 }

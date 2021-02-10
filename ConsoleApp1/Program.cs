@@ -25,7 +25,7 @@ namespace ConsoleApp1
             ivanov.AddClient(cli2);
             ivanov.AddClient(cli3);
             ivanov.ShowClients();
-           
+
 
             Car a100 = new Car(100, true, BrandСar.Audi,"a100");
             Car a80 = new Car(250, true, BrandСar.Audi, "a80");
@@ -45,10 +45,13 @@ namespace ConsoleApp1
             //Parking<Car> sts1 = new Parking<Car>(new List<Car> { a100, a80, a6, a8, a4, a8a });
             sts.tehnics.Sort();
             sts.Show();
+            sts.tehnics.Sort();
             Console.Clear();
 
             cli2.SayToDispather(ivanov);
             cli2.ByCar(ivanov);
+            ivanov.CheckServiceability();
+            sts.tehnics.Sort();
             Console.WriteLine(ivanov.Cassa);
             Console.WriteLine(cli.Sum);
             Console.WriteLine($"Congratulations on your purchase: {cli2.ToString()}");
