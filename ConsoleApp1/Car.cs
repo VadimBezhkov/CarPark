@@ -27,7 +27,8 @@ namespace ConsoleApp1
         Maserati,
         Lotus,
         Tesla,
-        Skoda
+        Skoda,
+        Volkswagen
     }
 
     public class Car : Vehicle, ICloneable
