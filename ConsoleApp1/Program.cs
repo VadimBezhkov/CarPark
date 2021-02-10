@@ -17,7 +17,7 @@ namespace ConsoleApp1
             cli2.Age = 22;
             cli2.FirstName = "Nivarov";
             cli2.Gender = (int)Gender.man;
-            Dispather ivanov = new Dispather("Ivanov", "Sergey", 29, Gender.man);
+            Dispather ivanov = new Dispather("Ivanov", "Sergey", 29, Gender.man,5);
             ivanov.AddClient(cli);
             ivanov.AddClient(cli1);
             ivanov.AddClient(cli2);
@@ -30,7 +30,8 @@ namespace ConsoleApp1
             Car a8a = (Car)a8.Clone();
             a8a.Price = 400;
             a8a.Serviceability=true;
-            Parking <Car> sts = new Parking<Car>(a100,a80,a6,a8,a4,a8a);
+            Parking <Vehicle> sts = new Parking<Vehicle>(a100,a80,a6,a8,a4,a8a);
+            ivanov.thehnics = sts;
             Car v40 = new Car(290, true, BrandСar.Volvo, "v40"); 
             sts.Addtehnics(v40);
             //Parking<Car> sts1 = new Parking<Car>(new List<Car> { a100, a80, a6, a8, a4, a8a });
