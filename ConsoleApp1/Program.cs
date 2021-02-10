@@ -11,8 +11,9 @@ namespace ConsoleApp1
         static void Main(string[] args)
         {
 
-            Client cli = new Client("sadasd", "asdasdasd", 12,Gender.man,100);
+            Client cli = new Client("sadasd", "asdasdasd", 12,Gender.man,15000);
             Client cli1 = new Client("sadasd", "asdasdasd", 18, Gender.woman, 200);
+ 
             Client cli2 = (Client)cli1.Clone();
             cli2.Age = 22;
             cli2.FirstName = "Nivarov";
@@ -36,6 +37,12 @@ namespace ConsoleApp1
             sts.Addtehnics(v40);
             //Parking<Car> sts1 = new Parking<Car>(new List<Car> { a100, a80, a6, a8, a4, a8a });
             sts.tehnics.Sort();
+            sts.Show();
+            Console.Clear();
+            cli.SayToDispather(ivanov);
+            cli.ByCar(ivanov);
+            Console.WriteLine(ivanov.Cassa);
+            Console.WriteLine(cli.Sum);
             sts.Show();
             Console.ReadKey();
         }

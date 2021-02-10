@@ -19,7 +19,7 @@ namespace ConsoleApp1
         {
             return $"FirstName: {FirstName} LastName: {LastName} Age: {Age} Gender {(Gender)Gender} Sum: {Sum}";
         }
-        public void SayToDispather(Dispather disp, int summ)
+        public void SayToDispather(Dispather disp)
         {
             disp.client.Add(this);
             affordable.Clear();
@@ -36,6 +36,23 @@ namespace ConsoleApp1
             foreach (var item in affordable)
             {
                 Console.WriteLine(item);
+            }
+        }
+        public void ByCar(Dispather disp)
+        {
+            Console.WriteLine("Enter Car");
+            string str = Console.ReadLine();
+            for (int i = 0; i < affordable.Count; i++)
+            {
+                var CurrentVeh = affordable[i];
+                if (CurrentVeh.Name == str)
+                {
+                    affordable.Remove(CurrentVeh);
+                    WhereMyCar.tehnics.Remove(CurrentVeh);
+                    Sum = Sum - CurrentVeh.Price;
+                    disp.Cassa = disp.Cassa + CurrentVeh.Price;
+                    break;
+                }
             }
         }
         public object Clone()
