@@ -20,11 +20,20 @@ namespace ConsoleApp1
     }
     class Dispather : Person
     {
-        public List<Client> client = new List<Client>();
+        private List<Client> client = new List<Client>();
 
         public void AddClient(Client client)
         {
-            this.client.Add(client);
+            Console.WriteLine("Enter you name");
+            string name =Console.ReadLine();
+            for (int i = 0; i < this.client.Count; i++)
+            {
+                if (client.FirstName == name)
+                    break;
+                else
+                    this.client.Add(client);
+            }
+
         }
         private int cassa;
 
