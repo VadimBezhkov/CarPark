@@ -26,17 +26,7 @@ namespace ConsoleApp1
 
         public void AddClient(Client client)
         {
-            Console.WriteLine("Enter you name");
-            string name =Console.ReadLine();
-
-            for (int i = 0; i < this.client.Count; i++)
-            {
-                if (client.FirstName == name)
-                    break;
-                else
-                    this.client.Add(client);
-            }
-
+            this.client.Add(client);
         }
         private int cassa;
 

@@ -44,20 +44,30 @@ namespace ConsoleApp1
         {
             Console.WriteLine("Enter Car");
             string str = Console.ReadLine();
+            Vehicle value=null;
 
             for (int i = 0; i < affordable.Count; i++)
             {
                 var CurrentVeh = affordable[i];
+               
                 if (CurrentVeh.Name == str)
                 {
-                    affordable.Remove(CurrentVeh);
-                    WhereMyCar.tehnics.Remove(CurrentVeh);
-                    Sum = Sum - CurrentVeh.Price;
-                    disp.Cassa = disp.Cassa + CurrentVeh.Price;
+                    value=CurrentVeh;
                     break;
                 }
             }
 
+            if (value != null)
+            {
+                affordable.Remove(value);
+                WhereMyCar.tehnics.Remove(value);
+                Sum = Sum - value.Price;
+                disp.Cassa = disp.Cassa + value.Price;
+            }
+        }
+        public void Massage()
+        {
+            Console.WriteLine("Customer bought a car");
         }
         public object Clone()
         {

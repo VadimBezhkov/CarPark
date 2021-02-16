@@ -17,13 +17,15 @@ namespace ConsoleApp1
         private int age;
         public int Age
         {
-            get { return age; }
+            get => age;
             set
-            { 
-                if(Age<120&&Age>0)
-                age = value; 
+            {
+                if (Age < 120 && Age > 0)
+                {
+                    age = value;
+                }
                 else
-                    Console.WriteLine("Incorected Age");
+                    Console.WriteLine($"{LastName} Incorected Age");
             }
         }
 
@@ -32,7 +34,7 @@ namespace ConsoleApp1
         {
             LastName = lastName;
             FirstName = firstName;
-            age=Age;
+            this.Age=Age;
             Gender = (byte)gender;
             
         }
