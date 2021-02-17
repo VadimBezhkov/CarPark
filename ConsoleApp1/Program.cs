@@ -10,7 +10,8 @@ namespace ConsoleApp1
     {
         BecomeAClient=1,
         ShowAllVehicle,
-        SortByPrice
+        SortByPrice,
+        ShowClients
     }
     public interface IShowMenu
     {
@@ -38,20 +39,26 @@ namespace ConsoleApp1
                         {
                             int Age;
                             int Summ;
+
                             Console.WriteLine("Enter you First Name");
                             string FirstName = Console.ReadLine();
+
                             Console.WriteLine("Enter you Last Name");
                             string LastName = Console.ReadLine();
+
                             Console.WriteLine("Enter Age");
                             int.TryParse(Console.ReadLine(), out Age);
+
                             Console.WriteLine("Gender");
                             Gender gender;
+
                             Enum.TryParse(Console.ReadLine(), out gender);
                             Console.WriteLine("Enter Summ");
+
                             int.TryParse(Console.ReadLine(), out Summ);
+
                             Client client  = new Client(FirstName,LastName,Age,gender,Summ);
                             ivanov.AddClient(client);
-                            ivanov.ShowClients();
                         }
                         break;
                     case Operation.ShowAllVehicle:
@@ -63,6 +70,11 @@ namespace ConsoleApp1
                         {
                             list.tehnics.Sort();
                             list.Show();
+                        }
+                        break;
+                    case Operation.ShowClients:
+                        {
+                            ivanov.ShowClients();
                         }
                         break;
                     default:
@@ -98,7 +110,7 @@ namespace ConsoleApp1
             Console.WriteLine("Become a client");
             Console.WriteLine("Show All Vehicle");
             Console.WriteLine("Sort by price");
-            Console.WriteLine("");
+            Console.WriteLine("Show Clients");
             Console.WriteLine("");
         }
         public Parking<Vehicle> CollectionVehicle()
