@@ -13,7 +13,8 @@ namespace ConsoleApp1
         SortByPrice,
         ShowClients,
         BuyTechniks,
-        AddTehnics
+        AddTehnics,
+        DeleteTehnics
     }
     public interface IShowMenu
     {
@@ -89,6 +90,22 @@ namespace ConsoleApp1
                             list.Show();
                             Car mycar = AddMyCar();
                             list.Addtehnics(mycar);
+                            Console.WriteLine($"Add car {mycar.Name}");
+                            list.Show();
+                        }
+                        break;
+                    case Operation.DeleteTehnics:
+                        {
+                            list.Show();
+                            Console.WriteLine("Enter name Car");
+                            string str = Console.ReadLine();
+                            Vehicle CurentCount=null;
+                            foreach (var item in list.tehnics)
+                            {
+                                    if (item.Name == str)
+                                        CurentCount = item;
+                            }
+                            list.tehnics.Remove(CurentCount);
                             list.Show();
                         }
                         break;
@@ -115,6 +132,7 @@ namespace ConsoleApp1
             Console.WriteLine("Show Clients - press 4");
             Console.WriteLine("Buy technics - press 5");
             Console.WriteLine("Add technics - press 6");
+            Console.WriteLine("Delete technics - press 7");
             Console.ResetColor();
         }
         public Parking<Vehicle> CollectionVehicle()
