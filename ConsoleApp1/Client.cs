@@ -40,7 +40,7 @@ namespace ConsoleApp1
                 Console.WriteLine(item);
             }
         }
-        public void ByCar(Dispather disp)
+        public void BuyCar(Dispather disp)
         {
             Console.WriteLine("Enter Car");
             string str = Console.ReadLine();

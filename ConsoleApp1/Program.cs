@@ -11,7 +11,8 @@ namespace ConsoleApp1
         BecomeAClient=1,
         ShowAllVehicle,
         SortByPrice,
-        ShowClients
+        ShowClients,
+        BuyTechniks
     }
     public interface IShowMenu
     {
@@ -37,28 +38,8 @@ namespace ConsoleApp1
                 {
                     case Operation.BecomeAClient:
                         {
-                            int Age;
-                            int Summ;
-
-                            Console.WriteLine("Enter you First Name");
-                            string FirstName = Console.ReadLine();
-
-                            Console.WriteLine("Enter you Last Name");
-                            string LastName = Console.ReadLine();
-
-                            Console.WriteLine("Enter Age");
-                            int.TryParse(Console.ReadLine(), out Age);
-
-                            Console.WriteLine("Gender");
-                            Gender gender;
-
-                            Enum.TryParse(Console.ReadLine(), out gender);
-                            Console.WriteLine("Enter Summ");
-
-                            int.TryParse(Console.ReadLine(), out Summ);
-
-                            Client client  = new Client(FirstName,LastName,Age,gender,Summ);
-                            ivanov.AddClient(client);
+                            var fulname = AddNameClient();
+                            AddMyClient(ivanov,fulname.Item1,fulname.Item2);
                         }
                         break;
                     case Operation.ShowAllVehicle:
@@ -70,6 +51,27 @@ namespace ConsoleApp1
                         {
                             list.tehnics.Sort();
                             list.Show();
+                        }
+                        break;
+                    case Operation.BuyTechniks:
+                        {
+                            var fulname = AddNameClient();
+                            Client CurrentUser = null;
+                            foreach (var item in ivanov.client)
+                            {
+                                if (item.FirstName == fulname.Item1 && item.LastName == fulname.Item2)
+                                    CurrentUser = item;
+                                break;
+                            }
+                            if (CurrentUser != null)
+                            {
+                                CurrentUser.BuyCar(ivanov);
+                            }
+                            else
+                            {
+                                Client client = AddMyClient(ivanov, fulname.Item1, fulname.Item2);
+                                client.BuyCar(ivanov);
+                            }
                         }
                         break;
                     case Operation.ShowClients:
@@ -99,7 +101,6 @@ namespace ConsoleApp1
                 //list.tehnics.Sort();
                 //Console.WriteLine(ivanov.Cassa);
                 //list.Show();
-                Console.ReadKey();
             }
         }
 
@@ -111,7 +112,7 @@ namespace ConsoleApp1
             Console.WriteLine("Show All Vehicle");
             Console.WriteLine("Sort by price");
             Console.WriteLine("Show Clients");
-            Console.WriteLine("");
+            Console.WriteLine("Buy technics ");
         }
         public Parking<Vehicle> CollectionVehicle()
         {
@@ -148,6 +149,34 @@ namespace ConsoleApp1
             name.AddClient(cli1);
             name.AddClient(cli2);
             name.AddClient(cli3);
+        }
+        public static Client AddMyClient(Dispather disp,string firstname, string lastname)
+        {
+            int Age;
+            int Summ;
+            Console.WriteLine("Enter Age");
+            int.TryParse(Console.ReadLine(), out Age);
+
+            Console.WriteLine("Gender");
+            Gender gender;
+
+            Enum.TryParse(Console.ReadLine(), out gender);
+            Console.WriteLine("Enter Summ");
+
+            int.TryParse(Console.ReadLine(), out Summ);
+
+            Client client = new Client(firstname, lastname, Age, gender, Summ);
+            disp.AddClient(client);
+            Console.WriteLine($"Hello {lastname},{firstname}");
+            return client;
+        }
+        public static (string,string) AddNameClient()
+        {
+            Console.WriteLine("Enter FirstName");
+            var str = Console.ReadLine();
+            Console.WriteLine("Enter LastName");
+            var str1 = Console.ReadLine();
+            return (str, str1);
         }
     }
 }
