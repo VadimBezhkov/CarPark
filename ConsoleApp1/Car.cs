@@ -53,5 +53,13 @@ namespace ConsoleApp1
         {
             return this.MemberwiseClone();
         }
+        public void Move()
+        {
+            Console.WriteLine("Movement started");
+        }
+        public void EndMove()
+        {
+            Console.WriteLine("The movement is over");
+        }
     }
 }
