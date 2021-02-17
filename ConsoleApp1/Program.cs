@@ -108,11 +108,11 @@ namespace ConsoleApp1
         {
             Console.WriteLine("My HomeWork");
             Console.WriteLine("by Vadim Bezhkov \n \n \n");
-            Console.WriteLine("Become a client");
-            Console.WriteLine("Show All Vehicle");
-            Console.WriteLine("Sort by price");
-            Console.WriteLine("Show Clients");
-            Console.WriteLine("Buy technics ");
+            Console.WriteLine("Become a client - press 1");
+            Console.WriteLine("Show All Vehicle - press 2");
+            Console.WriteLine("Sort by price - press 3");
+            Console.WriteLine("Show Clients - press 4");
+            Console.WriteLine("Buy technics - press 5");
         }
         public Parking<Vehicle> CollectionVehicle()
         {
