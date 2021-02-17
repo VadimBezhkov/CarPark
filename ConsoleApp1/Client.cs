@@ -21,7 +21,6 @@ namespace ConsoleApp1
         }
         public void SayToDispather(Dispather disp)
         {
-            disp.client.Add(this);
             affordable.Clear();
             WhereMyCar = disp.thehnics;
 

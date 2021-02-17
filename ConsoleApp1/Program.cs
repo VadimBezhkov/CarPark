@@ -29,6 +29,7 @@ namespace ConsoleApp1
                 Program my = new Program();
 
                 var list = my.CollectionVehicle();
+                ivanov.thehnics = list;
                 my.ShowMenu();
              
 
@@ -65,12 +66,15 @@ namespace ConsoleApp1
                             }
                             if (CurrentUser != null)
                             {
+                                CurrentUser.SayToDispather(ivanov);
                                 CurrentUser.BuyCar(ivanov);
                             }
                             else
                             {
                                 Client client = AddMyClient(ivanov, fulname.Item1, fulname.Item2);
+                                client.SayToDispather(ivanov);
                                 client.BuyCar(ivanov);
+
                             }
                         }
                         break;
@@ -82,37 +86,26 @@ namespace ConsoleApp1
                     default:
                         break;
                 }
-
                 Console.WriteLine();
-
-
-                
-
-                //var ivanov = my.CollectionClients();
-                //ivanov.ShowClients();
-                //ivanov.thehnics = list;
-
-                //list.tehnics.Sort();
-                //list.Show();
-                //list.tehnics.Sort();
-                //Console.Clear();
-
-                ////ivanov.CheckServiceability();
-                //list.tehnics.Sort();
-                //Console.WriteLine(ivanov.Cassa);
-                //list.Show();
             }
         }
 
         public void ShowMenu()
         {
-            Console.WriteLine("My HomeWork");
-            Console.WriteLine("by Vadim Bezhkov \n \n \n");
+            Console.BackgroundColor = ConsoleColor.Cyan;
+            Console.WriteLine(new string(' ',120));
+            Console.ResetColor();
+            Console.ForegroundColor = ConsoleColor.DarkRed;
+            Console.WriteLine("My Homework");
+            Console.ResetColor();
+            Console.WriteLine();
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
             Console.WriteLine("Become a client - press 1");
             Console.WriteLine("Show All Vehicle - press 2");
             Console.WriteLine("Sort by price - press 3");
             Console.WriteLine("Show Clients - press 4");
             Console.WriteLine("Buy technics - press 5");
+            Console.ResetColor();
         }
         public Parking<Vehicle> CollectionVehicle()
         {
@@ -131,6 +124,7 @@ namespace ConsoleApp1
             Parking<Vehicle> sts = new Parking<Vehicle>(a100, a80, a6, a8, a4, a8a, Golf);
             //Parking<Car> sts1 = new Parking<Car>(new List<Car> { a100, a80, a6, a8, a4, a8a });
             sts.Addtehnics(v40);
+            
             return sts;
         }
         public static void CollectionClients(Dispather name)
