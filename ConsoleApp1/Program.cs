@@ -20,13 +20,15 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
+            Dispather ivanov = new Dispather("Ivanov", "Sergey", 29, Gender.man, 5);
+            CollectionClients(ivanov);
             while (true)
             {
                 Program my = new Program();
 
                 var list = my.CollectionVehicle();
                 my.ShowMenu();
-                var disp= my.CollectionClients();
+             
 
                 Operation op;
                 Enum.TryParse(Console.ReadLine(), out op);
@@ -34,8 +36,6 @@ namespace ConsoleApp1
                 {
                     case Operation.BecomeAClient:
                         {
-                            Client nnn = new Client("asdasd", "asdasd", 22, Gender.man, 231123);
-                            disp.AddClient(nnn);
                             int Age;
                             int Summ;
                             Console.WriteLine("Enter you First Name");
@@ -50,8 +50,8 @@ namespace ConsoleApp1
                             Console.WriteLine("Enter Summ");
                             int.TryParse(Console.ReadLine(), out Summ);
                             Client client  = new Client(FirstName,LastName,Age,gender,Summ);
-                            disp.AddClient(client);
-                            disp.ShowClients();
+                            ivanov.AddClient(client);
+                            ivanov.ShowClients();
                         }
                         break;
                     case Operation.ShowAllVehicle:
@@ -120,7 +120,7 @@ namespace ConsoleApp1
             sts.Addtehnics(v40);
             return sts;
         }
-        public Dispather CollectionClients()
+        public static void CollectionClients(Dispather name)
         {
             Client cli = new Client("Mishael", "Saha", 22, Gender.man, 15000);
             Client cli1 = new Client("Furst", "Mistik", 18, Gender.woman, 200);
@@ -131,13 +131,11 @@ namespace ConsoleApp1
             cli3.FirstName = "Nivarov";
             cli3.Gender = (int)Gender.man;
 
-            Dispather ivanov = new Dispather("Ivanov", "Sergey", 29, Gender.man, 5);
-            ivanov.AddClient(cli);
-            ivanov.AddClient(cli1);
-            ivanov.AddClient(cli2);
-            ivanov.AddClient(cli3);
-            return ivanov;
-
+            
+            name.AddClient(cli);
+            name.AddClient(cli1);
+            name.AddClient(cli2);
+            name.AddClient(cli3);
         }
     }
 }
