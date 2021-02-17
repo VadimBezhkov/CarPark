@@ -12,7 +12,8 @@ namespace ConsoleApp1
         ShowAllVehicle,
         SortByPrice,
         ShowClients,
-        BuyTechniks
+        BuyTechniks,
+        AddTehnics
     }
     public interface IShowMenu
     {
@@ -24,14 +25,13 @@ namespace ConsoleApp1
         {
             Dispather ivanov = new Dispather("Ivanov", "Sergey", 29, Gender.man, 5);
             CollectionClients(ivanov);
+            Program my = new Program();
+            var list = my.CollectionVehicle();
             while (true)
             {
-                Program my = new Program();
-
-                var list = my.CollectionVehicle();
                 ivanov.thehnics = list;
                 my.ShowMenu();
-             
+                
 
                 Operation op;
                 Enum.TryParse(Console.ReadLine(), out op);
@@ -81,6 +81,15 @@ namespace ConsoleApp1
                     case Operation.ShowClients:
                         {
                             ivanov.ShowClients();
+
+                        }
+                        break;
+                    case Operation.AddTehnics:
+                        {
+                            list.Show();
+                            Car mycar = AddMyCar();
+                            list.Addtehnics(mycar);
+                            list.Show();
                         }
                         break;
                     default:
@@ -105,6 +114,7 @@ namespace ConsoleApp1
             Console.WriteLine("Sort by price - press 3");
             Console.WriteLine("Show Clients - press 4");
             Console.WriteLine("Buy technics - press 5");
+            Console.WriteLine("Add technics - press 6");
             Console.ResetColor();
         }
         public Parking<Vehicle> CollectionVehicle()
@@ -171,6 +181,22 @@ namespace ConsoleApp1
             Console.WriteLine("Enter LastName");
             var str1 = Console.ReadLine();
             return (str, str1);
+        }
+        public static Car AddMyCar()
+        {
+            int summ;
+            bool servise;
+            BrandСar brand;
+            Console.WriteLine("Enter Summ");
+            int.TryParse(Console.ReadLine(), out summ);
+            Console.WriteLine("On The Go Or Not");
+            bool.TryParse(Console.ReadLine(), out servise);
+            Console.WriteLine("Enter Brend");
+            Enum.TryParse(Console.ReadLine(), out brand);
+            Console.WriteLine("Enter Name");
+            string name = Console.ReadLine();
+            Car car = new Car(summ, servise, brand, name);
+            return car;
         }
     }
 }
