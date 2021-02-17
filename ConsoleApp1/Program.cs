@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace ConsoleApp1
 {
+    public delegate void MyDelegate();
     enum Operation
     {
         BecomeAClient=1,
@@ -26,13 +28,16 @@ namespace ConsoleApp1
         {
             Dispather ivanov = new Dispather("Ivanov", "Sergey", 29, Gender.man, 5);
             CollectionClients(ivanov);
+
             Program my = new Program();
             var list = my.CollectionVehicle();
+
             while (true)
             {
                 ivanov.thehnics = list;
-                my.ShowMenu();
-                
+
+                MyDelegate Menu = new MyDelegate(my.ShowMenu);
+                Menu?.Invoke();
 
                 Operation op;
                 Enum.TryParse(Console.ReadLine(), out op);
@@ -116,7 +121,7 @@ namespace ConsoleApp1
             }
         }
 
-        public void ShowMenu()
+        public void  ShowMenu()
         {
             Console.BackgroundColor = ConsoleColor.Cyan;
             Console.WriteLine(new string(' ',120));
