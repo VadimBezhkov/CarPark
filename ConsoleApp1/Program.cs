@@ -16,7 +16,8 @@ namespace ConsoleApp1
         ShowClients,
         BuyTechniks,
         AddTehnics,
-        DeleteTehnics
+        DeleteTehnics,
+        TetsDrive
     }
     public interface IShowMenu
     {
@@ -26,6 +27,12 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
+            void TestDrive(string text)
+            {
+                Console.WriteLine("I'll start the engine");
+                Console.WriteLine("The movement is over");
+            }
+
             Dispather ivanov = new Dispather("Ivanov", "Sergey", 29, Gender.man, 5);
             CollectionClients(ivanov);
 
@@ -114,6 +121,26 @@ namespace ConsoleApp1
                             list.Show();
                         }
                         break;
+                    case Operation.TetsDrive:
+                        {
+                            list.Show();
+                            Console.WriteLine("select a car");
+                            string str = Console.ReadLine();
+                            foreach (var item in list.tehnics)
+                            {
+                                if (item.Name == str)
+                                {
+                                    Console.WriteLine(item.ToString());
+                                    Car myCar = new Car();
+                                    myCar = item as Car;
+                                    myCar.Drive += TestDrive;
+                                    myCar.Start();
+                                }
+                            }
+                      
+                            
+                        }
+                        break;
                     default:
                         break;
                 }
@@ -138,6 +165,7 @@ namespace ConsoleApp1
             Console.WriteLine("Buy technics - press 5");
             Console.WriteLine("Add technics - press 6");
             Console.WriteLine("Delete technics - press 7");
+            Console.WriteLine("Test Drive - press 8");
             Console.ResetColor();
         }
         public Parking<Vehicle> CollectionVehicle()

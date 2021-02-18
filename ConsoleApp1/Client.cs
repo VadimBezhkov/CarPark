@@ -65,6 +65,7 @@ namespace ConsoleApp1
                 value.Messenger += Go;
                 value.Messenger += ShowSystem;
                 value.Move();
+
                 affordable.Remove(value);
                 WhereMyCar.tehnics.Remove(value);
                 Sum = Sum - value.Price;
@@ -81,7 +82,7 @@ namespace ConsoleApp1
         }
         public void Go(string text)
         {
-            Console.WriteLine("This is Method Go");
+            Console.WriteLine("By this Car");
         }
         public void ShowSystem(string message)
         {

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp1
 {
+    public delegate void TestDelegate(string text);
    public enum BrandСar
     {
         Volvo,
@@ -33,7 +34,7 @@ namespace ConsoleApp1
 
     public class Car : Vehicle, ICloneable
     {
-        
+        public event TestDelegate Drive;
         public Car(int price, bool service,BrandСar brand,string name) : base(price, service,name)
         {
             Brand = (int)brand;
@@ -58,6 +59,10 @@ namespace ConsoleApp1
         {
             return this.MemberwiseClone();
         }
-
+       
+        public void Start()
+        {
+            Drive?.Invoke("test Drive Car");
+        }
     }
 }
