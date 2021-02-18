@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp1
 {
+    // create delegate
     public delegate void MyDelegate1();
     enum Operation
     {
@@ -19,12 +20,14 @@ namespace ConsoleApp1
         DeleteTehnics,
         TetsDrive
     }
+    //create interface Menu
     public interface IShowMenu
     {
         void ShowMenu();
     }
     class Program : IShowMenu
     {
+        // create system event
         public static EventLog systemPoolLog;
         public static void ShowSystem(string message)
         {
@@ -39,15 +42,18 @@ namespace ConsoleApp1
         }
         static void Main(string[] args)
         {
+            //method communicated with delegate
             void TestDrive(string text)
             {
                 Console.WriteLine("I'll start the engine");
                 Console.WriteLine("The movement is over");
             }
 
+            //create dispether
             Dispather ivanov = new Dispather("Ivanov", "Sergey", 29, Gender.man, 5);
             CollectionClients(ivanov);
 
+            //create collection car
             Program my = new Program();
             var list = my.CollectionVehicle();
 
@@ -55,30 +61,41 @@ namespace ConsoleApp1
             {
                 ivanov.thehnics = list;
 
+                //create delegate menu
                 MyDelegate1 Menu = new MyDelegate1(my.ShowMenu);
+
+                //delegate invocation
                 Menu?.Invoke();
 
+                //menu selection
                 Operation op;
                 Enum.TryParse(Console.ReadLine(), out op);
                 switch (op)
                 {
+                    //Become A Client
                     case Operation.BecomeAClient:
                         {
                             var fulname = AddNameClient();
                             AddMyClient(ivanov, fulname.Item1, fulname.Item2);
                         }
                         break;
+
+                    //Show All Vehicle
                     case Operation.ShowAllVehicle:
                         {
                             list.Show();
                         }
                         break;
+
+                    //Sort By Price
                     case Operation.SortByPrice:
                         {
                             list.tehnics.Sort();
                             list.Show();
                         }
                         break;
+
+                    //Buy Car
                     case Operation.BuyTechniks:
                         {
                             var fulname = AddNameClient();
@@ -103,12 +120,16 @@ namespace ConsoleApp1
                             }
                         }
                         break;
+
+                    //Show Clients
                     case Operation.ShowClients:
                         {
                             ivanov.ShowClients();
 
                         }
                         break;
+
+                    //Add Car
                     case Operation.AddTehnics:
                         {
                             list.Show();
@@ -118,6 +139,8 @@ namespace ConsoleApp1
                             list.Show();
                         }
                         break;
+
+                        //Delete Car MyCollection
                     case Operation.DeleteTehnics:
                         {
                             list.Show();
@@ -133,6 +156,8 @@ namespace ConsoleApp1
                             list.Show();
                         }
                         break;
+
+                    //Take a car for a test drive
                     case Operation.TetsDrive:
                         {
                             list.Show();
@@ -153,13 +178,13 @@ namespace ConsoleApp1
                             }  
                         }
                         break;
+
                     default:
                         break;
                 }
                 Console.WriteLine();
             }
         }
-
         public void ShowMenu()
         {
             Console.BackgroundColor = ConsoleColor.Cyan;
@@ -180,6 +205,8 @@ namespace ConsoleApp1
             Console.WriteLine("Test Drive - press 8");
             Console.ResetColor();
         }
+
+        //create collection car hardcor
         public Parking<Vehicle> CollectionVehicle()
         {
             Car a100 = new Car(3100, true, BrandСar.Audi, "a100");
@@ -200,6 +227,8 @@ namespace ConsoleApp1
 
             return sts;
         }
+
+        //create collection client hardcor
         public static void CollectionClients(Dispather name)
         {
             Client cli = new Client("Mishael", "Saha", 22, Gender.man, 15000);
@@ -237,6 +266,7 @@ namespace ConsoleApp1
             Console.WriteLine($"Hello {lastname},{firstname}");
             return client;
         }
+        //First Name and List Name my Client
         public static (string, string) AddNameClient()
         {
             Console.WriteLine("Enter FirstName");
@@ -245,6 +275,7 @@ namespace ConsoleApp1
             var str1 = Console.ReadLine();
             return (str, str1);
         }
+        //New Car
         public static Car AddMyCar()
         {
             int summ;

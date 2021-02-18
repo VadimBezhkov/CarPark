@@ -52,10 +52,7 @@ namespace ConsoleApp1
             Console.ResetColor();
             return $"Name: {Name}|  Brand: {(BrandСar)Brand}| Price: {Price}| On the run: {Serviceability} ";
         }
-        //public object Clone()
-        //{
-        //    return new Car(Price, Serviceability, (BrandСar)Brand, Name);
-        //}
+
         public object Clone()
         {
             return this.MemberwiseClone();
