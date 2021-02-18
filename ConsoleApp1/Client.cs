@@ -9,6 +9,8 @@ namespace ConsoleApp1
 {
     class Client : Person, ICloneable
     {
+        EventLog myLog = new EventLog();
+
         public static EventLog systemPoolLog;
         public Car NameCar { get; set; }
         private List<Vehicle> affordable = new List<Vehicle>();
@@ -82,16 +84,19 @@ namespace ConsoleApp1
         }
         public void Go(string text)
         {
-            Console.WriteLine("By this Car");
+            Console.WriteLine("Bye this Car");
         }
         public void ShowSystem(string message)
         {
-            if (!EventLog.SourceExists("MyPoolLog"))
+            if (!EventLog.SourceExists("Bye this Car"))
             {
-                EventLog.CreateEventSource("MyPoolLog", "PoolLog");
+                EventLog.CreateEventSource("Bye this Car", "My new Log");
+                Console.WriteLine("Hello Alexey");
+                Console.WriteLine("My Event posh log the system application");
+                return;
             }
 
-            systemPoolLog.Source = "MyPoolLog";
+            systemPoolLog.Source = "Hello Alexey";
 
             systemPoolLog.WriteEntry(message);
         }

@@ -38,7 +38,7 @@ namespace ConsoleApp1
         }
         public void Move()
         {
-            Messenger?.Invoke("Movement started");
+            Messenger?.Invoke("Bye Car!!!!");
             Console.WriteLine("Movement started");
         }
         public void EndMove()
