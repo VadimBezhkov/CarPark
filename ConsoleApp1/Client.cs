@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,12 +9,15 @@ namespace ConsoleApp1
 {
     class Client : Person, ICloneable
     {
+        public static EventLog systemPoolLog;
+        public Car NameCar { get; set; }
         private List<Vehicle> affordable = new List<Vehicle>();
         public Parking<Vehicle> WhereMyCar { get; set; }
         public int Sum { get; set; }
         public Client(string lastName, string firstName, int Age, Gender gender, int sum) : base(lastName, firstName, Age, gender)
         {
             Sum = sum;
+            systemPoolLog = new EventLog();
         }
         public override string ToString()
         {
@@ -55,7 +59,10 @@ namespace ConsoleApp1
                     break;
                 }
             }
+            value.Messenger += Go;
+            value.Messenger += ShowSystem;
 
+            value.Move();
             if (value != null)
             {
                 affordable.Remove(value);
@@ -71,6 +78,21 @@ namespace ConsoleApp1
         public object Clone()
         {
             return this.MemberwiseClone();
-        }  
+        }
+        public void Go(string text)
+        {
+            Console.WriteLine("This is Method Go");
+        }
+        public void ShowSystem(string message)
+        {
+            if (!EventLog.SourceExists("MyPoolLog"))
+            {
+                EventLog.CreateEventSource("MyPoolLog", "PoolLog");
+            }
+
+            systemPoolLog.Source = "MyPoolLog";
+
+            systemPoolLog.WriteEntry(message);
+        }
     }
 }

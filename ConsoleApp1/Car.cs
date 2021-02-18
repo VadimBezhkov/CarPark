@@ -33,10 +33,15 @@ namespace ConsoleApp1
 
     public class Car : Vehicle, ICloneable
     {
+        
         public Car(int price, bool service,BrandСar brand,string name) : base(price, service,name)
         {
             Brand = (int)brand;
             
+        }
+        public Car()
+        {
+
         }
         public override string ToString()
         {
@@ -53,13 +58,6 @@ namespace ConsoleApp1
         {
             return this.MemberwiseClone();
         }
-        public void Move()
-        {
-            Console.WriteLine("Movement started");
-        }
-        public void EndMove()
-        {
-            Console.WriteLine("The movement is over");
-        }
+
     }
 }

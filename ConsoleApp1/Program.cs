@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp1
 {
-    public delegate void MyDelegate();
+    public delegate void MyDelegate1();
     enum Operation
     {
-        BecomeAClient=1,
+        BecomeAClient = 1,
         ShowAllVehicle,
         SortByPrice,
         ShowClients,
@@ -20,9 +20,9 @@ namespace ConsoleApp1
     }
     public interface IShowMenu
     {
-       void ShowMenu();
+        void ShowMenu();
     }
-    class Program:IShowMenu
+    class Program : IShowMenu
     {
         static void Main(string[] args)
         {
@@ -36,7 +36,7 @@ namespace ConsoleApp1
             {
                 ivanov.thehnics = list;
 
-                MyDelegate Menu = new MyDelegate(my.ShowMenu);
+                MyDelegate1 Menu = new MyDelegate1(my.ShowMenu);
                 Menu?.Invoke();
 
                 Operation op;
@@ -46,7 +46,7 @@ namespace ConsoleApp1
                     case Operation.BecomeAClient:
                         {
                             var fulname = AddNameClient();
-                            AddMyClient(ivanov,fulname.Item1,fulname.Item2);
+                            AddMyClient(ivanov, fulname.Item1, fulname.Item2);
                         }
                         break;
                     case Operation.ShowAllVehicle:
@@ -104,11 +104,11 @@ namespace ConsoleApp1
                             list.Show();
                             Console.WriteLine("Enter name Car");
                             string str = Console.ReadLine();
-                            Vehicle CurentCount=null;
+                            Vehicle CurentCount = null;
                             foreach (var item in list.tehnics)
                             {
-                                    if (item.Name == str)
-                                        CurentCount = item;
+                                if (item.Name == str)
+                                    CurentCount = item;
                             }
                             list.tehnics.Remove(CurentCount);
                             list.Show();
@@ -121,10 +121,10 @@ namespace ConsoleApp1
             }
         }
 
-        public void  ShowMenu()
+        public void ShowMenu()
         {
             Console.BackgroundColor = ConsoleColor.Cyan;
-            Console.WriteLine(new string(' ',120));
+            Console.WriteLine(new string(' ', 120));
             Console.ResetColor();
             Console.ForegroundColor = ConsoleColor.DarkRed;
             Console.WriteLine("My Homework");
@@ -157,7 +157,7 @@ namespace ConsoleApp1
             Parking<Vehicle> sts = new Parking<Vehicle>(a100, a80, a6, a8, a4, a8a, Golf);
             //Parking<Car> sts1 = new Parking<Car>(new List<Car> { a100, a80, a6, a8, a4, a8a });
             sts.Addtehnics(v40);
-            
+
             return sts;
         }
         public static void CollectionClients(Dispather name)
@@ -171,13 +171,13 @@ namespace ConsoleApp1
             cli3.FirstName = "Nivarov";
             cli3.Gender = (int)Gender.man;
 
-            
+
             name.AddClient(cli);
             name.AddClient(cli1);
             name.AddClient(cli2);
             name.AddClient(cli3);
         }
-        public static Client AddMyClient(Dispather disp,string firstname, string lastname)
+        public static Client AddMyClient(Dispather disp, string firstname, string lastname)
         {
             int Age;
             int Summ;
@@ -197,7 +197,7 @@ namespace ConsoleApp1
             Console.WriteLine($"Hello {lastname},{firstname}");
             return client;
         }
-        public static (string,string) AddNameClient()
+        public static (string, string) AddNameClient()
         {
             Console.WriteLine("Enter FirstName");
             var str = Console.ReadLine();

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp1
 {
+    public delegate void MyDelegate(string text);
     public interface ICloneable
     {
         object Clone();
@@ -16,7 +17,7 @@ namespace ConsoleApp1
     }
    public abstract class Vehicle:IComparable<Vehicle>
     {
-
+        public event MyDelegate Messenger;
         public int Price { get; set; }
         public int Brand { get; set; }
         public bool Serviceability { get; set; }
@@ -27,10 +28,22 @@ namespace ConsoleApp1
             Serviceability = service;
             Name = name;
         }
+        public Vehicle()
+        {
 
+        }
         public int CompareTo(Vehicle other)
         {
             return this.Price.CompareTo(other.Price);
+        }
+        public void Move()
+        {
+            Messenger?.Invoke("Movement started");
+            Console.WriteLine("Movement started");
+        }
+        public void EndMove()
+        {
+            Console.WriteLine("The movement is over");
         }
     }
 }
