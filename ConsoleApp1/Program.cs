@@ -25,6 +25,18 @@ namespace ConsoleApp1
     }
     class Program : IShowMenu
     {
+        public static EventLog systemPoolLog;
+        public static void ShowSystem(string message)
+        {
+            if (!EventLog.SourceExists("MyPoolLog"))
+            {
+                EventLog.CreateEventSource("MyPoolLog", "PoolLog");
+            }
+
+            systemPoolLog.Source = "MyPoolLog";
+
+            systemPoolLog.WriteEntry(message);
+        }
         static void Main(string[] args)
         {
             void TestDrive(string text)
@@ -134,11 +146,11 @@ namespace ConsoleApp1
                                     Car myCar = new Car();
                                     myCar = item as Car;
                                     myCar.Drive += TestDrive;
+                                    systemPoolLog = new EventLog();
+                                    myCar.Drive += ShowSystem;
                                     myCar.Start();
                                 }
-                            }
-                      
-                            
+                            }  
                         }
                         break;
                     default:
