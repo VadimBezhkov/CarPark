@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp1
 {
+    public delegate void ClientDelegate(string message);
     interface IVehicleDelivery:ISum,ICheck
     {
         void Issue();
@@ -21,6 +22,7 @@ namespace ConsoleApp1
     }
     class Dispather : Person, ICheck
     {
+        public event  ClientDelegate Showweed;
         public List<Client> client = new List<Client>();
         private List<Vehicle> veh = new List<Vehicle>();
 
@@ -47,6 +49,7 @@ namespace ConsoleApp1
         {
             foreach (var myclaent in client)
             {
+                Showweed($"Clieent is{myclaent}");
                 Console.WriteLine(myclaent.ToString());
             }
         }

@@ -124,8 +124,8 @@ namespace ConsoleApp1
                     //Show Clients
                     case Operation.ShowClients:
                         {
+                            ivanov.Showweed += Disp;
                             ivanov.ShowClients();
-
                         }
                         break;
 
@@ -291,6 +291,10 @@ namespace ConsoleApp1
             string name = Console.ReadLine();
             Car car = new Car(summ, servise, brand, name);
             return car;
+        }
+        public static void Disp(string text)
+        {
+            Console.WriteLine("This is client My company");
         }
     }
 }
