@@ -294,7 +294,9 @@ namespace ConsoleApp1
         }
         public static void Disp(string text)
         {
-            Console.WriteLine("This is client My company");
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine($"This is client company Park");
+            Console.ResetColor();
         }
     }
 }
