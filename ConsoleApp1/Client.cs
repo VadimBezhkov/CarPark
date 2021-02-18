@@ -59,12 +59,12 @@ namespace ConsoleApp1
                     break;
                 }
             }
-            value.Messenger += Go;
-            value.Messenger += ShowSystem;
-
-            value.Move();
+            
             if (value != null)
             {
+                value.Messenger += Go;
+                value.Messenger += ShowSystem;
+                value.Move();
                 affordable.Remove(value);
                 WhereMyCar.tehnics.Remove(value);
                 Sum = Sum - value.Price;
