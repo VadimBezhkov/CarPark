@@ -16,7 +16,6 @@ namespace ConsoleApp1
     class Driver : Person
     {
         public int Experience { get; set; }
-        public string MyProperty { get; set; }
         public Driver(string lastName, string firstName, int Age, Gender gender,int exsp) : base(lastName, firstName, Age, gender)
         {
             Experience = exsp;
